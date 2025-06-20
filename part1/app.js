@@ -34,8 +34,6 @@ let db;
       database: 'DogWalkService'
     });
 
-    // 可选：这里可以初始化表或数据
-    // await db.execute(...);
 
   } catch (err) {
     console.error('Error setting up database:', err);
