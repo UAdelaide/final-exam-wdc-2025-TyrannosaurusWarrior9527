@@ -25,11 +25,11 @@
   </form>
 
   <script>
-document.getElementById('loginForm').addEventListener('submit', async function (e) {
-  e.preventDefault(); // 阻止表单默认提交
+    document.getElementById('loginForm').addEventListener('submit', async function (e) {
+      e.preventDefault(); // 阻止表单默认提交
 
-  const username = document.querySelector('input[name="username"]').value;
-  const password = document.querySelector('input[name="password"]').value;
+      const username = document.querySelector('input[name="username"]').value;
+      const password = document.querySelector('input[name="password"]').value;
 
   try {
     const response = await fetch('/login', {
