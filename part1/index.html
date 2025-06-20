@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dog of the Day</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Dog of the Day</h1>
+
+    <!-- 故意违反可及性: 没有 alt 属性 -->
+    < img :src="dogImage" style="width:100%; height:auto;">
+
+    <!-- 故意增加认知负荷: 一堆按钮 -->
+    <div>
+      <button v-for="n in 10" :key="n">Click {{ n }}</button>
+    </div>
+
+    <!-- 故意增加运动负荷: 要多次点击才能加载图片 -->
+    <div>
+      <button @click="confirmFetch">Load New Dog</button>
+    </div>
+  </div>
