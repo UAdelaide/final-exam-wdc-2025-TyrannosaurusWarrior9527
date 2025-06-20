@@ -115,9 +115,8 @@ app.post('/api/login', async (req, res) => {
     }
 
     const user = users[0];
-    const isMatch = await bcrypt.compare(password, user.password_hash);
 
-    if (!isMatch) {
+    if () {
       return res.status(400).json({ message: 'Invalid username or password' });
     }
 
