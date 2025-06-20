@@ -1,11 +1,11 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var mysql = require('mysql2/promise');
-var bcrypt = require("bcryptjs");
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mysql = require('mysql2/promise');
+const bcrypt = require("bcryptjs");
 
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
