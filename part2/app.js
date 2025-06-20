@@ -24,5 +24,7 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use('/user', userRoutes);
 app.use('/walk', walkRoutes);
 
+//index
+
 // Export the app instead of listening here
 module.exports = app;
