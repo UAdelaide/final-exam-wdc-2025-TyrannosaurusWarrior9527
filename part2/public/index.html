@@ -41,7 +41,7 @@
         const result = await response.json();
 
         if (response.ok) {
-          // 根据身份跳转
+          // based on identity
           if (result.role === 'owner') {
             window.location.href = 'owner-dashboard.html';
           } else if (result.role === 'walker') {
