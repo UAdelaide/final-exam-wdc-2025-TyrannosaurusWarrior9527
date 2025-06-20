@@ -21,6 +21,7 @@ let db;
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '123456',
       database: process.env.DB_NAME || 'DogWalkService'
+      port:3307
     });
     console.log('✅ Connected to MySQL');
   } catch (err) {
