@@ -97,7 +97,7 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// 测试首页
+// 
 app.get('/', (req, res) => {
   res.send('Dog Walking Service API is running.');
 });
