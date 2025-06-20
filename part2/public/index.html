@@ -41,7 +41,7 @@
         const result = await response.json();
 
         if (response.ok) {
-          // based on identity
+          // based on identity to dashboard
           if (result.role === 'owner') {
             window.location.href = 'owner-dashboard.html';
           } else if (result.role === 'walker') {
