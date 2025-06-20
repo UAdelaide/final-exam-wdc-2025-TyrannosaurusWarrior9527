@@ -21,7 +21,7 @@ app.use(session({
 app.use(express.static(path.join(__dirname,'public')));
 
 // Routes
-app.use('/user', walkRoutes);
+app.use('/user', userRoutes);
 app.use('/api/users', userRoutes);
 
 // Export the app instead of listening here
