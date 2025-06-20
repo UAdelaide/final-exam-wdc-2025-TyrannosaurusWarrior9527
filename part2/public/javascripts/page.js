@@ -212,3 +212,19 @@ function logout(){
 
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('/walk/owner-dogs')
+    .then(response => response.json())
+    .then(data => {
+      const select = document.getElementById('dogSelect');
+      data.forEach(dog => {
+        const option = document.createElement('option');
+        option.value = dog.dog_id;
+        option.textContent = dog.name;
+        select.appendChild(option);
+      });
+    })
+    .catch(err => {
+      console.error('Error fetching dogs:', err);
+    });
+});
