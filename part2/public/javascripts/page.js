@@ -228,3 +228,4 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('Error fetching dogs:', err);
     });
 });
+
