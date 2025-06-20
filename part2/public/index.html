@@ -41,18 +41,18 @@
         const result = await response.json();
 
         if (response.ok) {
-      // 根据身份跳转
-      if (result.role === 'owner') {
-        window.location.href = 'owner-dashboard.html';
-      } else if (result.role === 'walker') {
-        window.location.href = 'walker-dashboard.html';
-      } else {
-        alert('Unknown role');
-      }
-    } else {
-      alert(result.error || 'Login failed');
-    }
-  } catch (err) {
+          // 根据身份跳转
+          if (result.role === 'owner') {
+            window.location.href = 'owner-dashboard.html';
+          } else if (result.role === 'walker') {
+            window.location.href = 'walker-dashboard.html';
+          } else {
+            alert('Unknown role');
+          }
+        } else {
+          alert(result.error || 'Login failed');
+        }
+      } catch (err) {
     console.error('Error during login:', err);
     alert('Error during login');
   }
