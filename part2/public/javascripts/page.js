@@ -211,3 +211,4 @@ function logout(){
     xmlhttp.send();
 
 }
+
