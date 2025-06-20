@@ -17,7 +17,8 @@ app.use(session({
   saveUninitialized: false
 }));
 
-
+// public
+app.use(express.static)
 
 // Routes
 const walkRoutes = require('./routes/walkRoutes');
