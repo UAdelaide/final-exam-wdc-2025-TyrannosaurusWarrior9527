@@ -32,15 +32,15 @@
       const password = document.querySelector('input[name="password"]').value;
 
       try {
-    const response = await fetch('/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password })
-    });
+        const response = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
 
-    const result = await response.json();
+        const result = await response.json();
 
-    if (response.ok) {
+        if (response.ok) {
       // 根据身份跳转
       if (result.role === 'owner') {
         window.location.href = 'owner-dashboard.html';
