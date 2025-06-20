@@ -50,7 +50,15 @@ router.post('/login', async (req, res) => {
     }
 
 // POST logout
-
+router.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      return res.status(500).json({ error: 'Logout failed' });
+    }
+    res.clearCookie('connect.sid');
+    res.redirect('/');
+  });
+});
 
     // stored session
     req.session.user = rows[0];
