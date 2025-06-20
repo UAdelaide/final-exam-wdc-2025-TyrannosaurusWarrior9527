@@ -22,7 +22,7 @@ let db;
       password: '123456' // sql password
     });
 
-    // 创建数据库（按需要修改）
+    // Create the database
     await connection.query('CREATE DATABASE IF NOT EXISTS DogWalkService');
     await connection.end();
 
