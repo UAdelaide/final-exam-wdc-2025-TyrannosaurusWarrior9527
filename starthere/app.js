@@ -63,7 +63,7 @@ let db;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 注册接口
+
 app.post('/api/register', async (req, res) => {
   const { username, email, password, role } = req.body;
 
