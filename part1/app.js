@@ -19,7 +19,7 @@ let db;
     const connection = await mysql.createConnection({
       host: 'localhost',
       user: 'root',
-      password: '123456' // 你的 MySQL 密码
+      password: '123456' // sql password
     });
 
     // 创建数据库（按需要修改）
