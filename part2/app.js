@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-// session
+// session(stored sata)
 app.use(session({
   secret: 'dogwalk-secret-key',
   resave: false,
