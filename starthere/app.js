@@ -84,7 +84,7 @@ app.post('/api/login', async (req, res) => {
 
     const user = users[0];
 
-    if (password!== user.pssword_hash ) {
+    if (password!== user.password_hash ) {
       return res.status(400).json({ message: 'Invalid username or password' });
     }
 
