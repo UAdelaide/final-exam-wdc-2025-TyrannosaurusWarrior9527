@@ -9,10 +9,10 @@
   <div id="app">
     <h1>Dog of the Day</h1>
 
-    <!-- 故意违反可及性: 没有 alt 属性 -->
+    <!-- No alt attribute -->
     < img :src="dogImage" style="width:100%; height:auto;">
 
-    <!-- 故意增加认知负荷: 一堆按钮 -->
+    <!-- Many buttons -->
     <div>
       <button v-for="n in 10" :key="n">Click {{ n }}</button>
     </div>
