@@ -18,7 +18,7 @@ let db;
 (async () => {
   try {
     db = await mysql.createConnection({
-      host: process.env.DB_HOST || 'host',
+      host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '123456',
       database: process.env.DB_NAME || 'DogWalkService'
