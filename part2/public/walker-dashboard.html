@@ -96,23 +96,6 @@
       });
   }
 
-  const user = ref(null);
-async function getCurrentUser() {
-  try {
-    const res = await fetch('/user/me');
-    if (!res.ok) throw new Error('Failed to get current user');
-    const data = await res.json();
-    user.value = data.user_id;
-  } catch (err) {
-    error.value = err.message;
-  }
-}
-
-async function applyToWalk(requestId) {
-  if (!user.value) {
-    error.value = 'Walker ID not loaded';
-    return;
-  }
 
   try {
     const res = await fetch(`/api/walks/${requestId}/apply`, {
@@ -131,11 +114,6 @@ async function applyToWalk(requestId) {
     message.value = '';
   }
 }
-
-onMounted(() => {
-  getCurrentUser();
-  loadWalkRequests();
-});
 
   </script>
 </body>
