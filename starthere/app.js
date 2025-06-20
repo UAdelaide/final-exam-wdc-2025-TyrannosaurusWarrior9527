@@ -63,7 +63,7 @@ let db;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+// register
 app.post('/api/register', async (req, res) => {
   const { username, email, password, role } = req.body;
 
@@ -99,7 +99,7 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-// 登录接口
+// login
 app.post('/api/login', async (req, res) => {
   const { username, password } = req.body;
 
@@ -131,7 +131,6 @@ app.post('/api/login', async (req, res) => {
   }
 });
 
-// 默认主页
 app.get('/', (req, res) => {
   res.send('Dog Walking Service API is running.');
 });
