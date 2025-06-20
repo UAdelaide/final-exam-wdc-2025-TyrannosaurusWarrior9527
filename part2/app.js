@@ -25,7 +25,9 @@ app.use('/user', userRoutes);
 app.use('/walk', walkRoutes);
 
 // index routes
-app.get('/',(req,res)
+app.get('/',(req,res) =>{
+    res.sendFile(path)
+}
 
 // Export the app instead of listening here
 module.exports = app;
