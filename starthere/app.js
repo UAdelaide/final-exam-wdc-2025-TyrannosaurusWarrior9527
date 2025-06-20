@@ -29,7 +29,7 @@ let db;
   }
 })();
 
-// 注册接口
+// register
 app.post('/api/register', async (req, res) => {
   const { username, email, password, role } = req.body;
 
