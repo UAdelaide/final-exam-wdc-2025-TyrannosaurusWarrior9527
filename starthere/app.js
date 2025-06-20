@@ -3,7 +3,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mysql = require('mysql2/promise');
-const bcrypt = require("bcryptjs");
 
 const app = express();
 
@@ -51,8 +50,6 @@ app.post('/api/register', async (req, res) => {
       return res.status(400).json({ message: 'Username or email already exists' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-
     await db.execute(
       'INSERT INTO Users (username, email, password_hash, role) VALUES (?, ?, ?, ?)',
       [username, email, hashedPassword, role]
@@ -64,6 +61,7 @@ app.post('/api/register', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 // login
 app.post('/api/login', async (req, res) => {
