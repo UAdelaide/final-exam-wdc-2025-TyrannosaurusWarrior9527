@@ -15,11 +15,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 let db;
 
-// 数据库连接（适配 Docker 环境或本地）
 (async () => {
   try {
     db = await mysql.createConnection({
-      host: process.env.DB_HOST || 'mysql',  // 推荐用 mysql 服务名（Docker Compose）
+      host: process.env.DB_HOST || 'host',
       user: process.env.DB_USER || 'root',
       password: process.env.DB_PASSWORD || '123456',
       database: process.env.DB_NAME || 'DogWalkService'
