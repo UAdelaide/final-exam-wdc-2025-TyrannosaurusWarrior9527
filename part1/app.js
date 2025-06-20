@@ -17,7 +17,7 @@ let db;
   try {
     // Connect without DB first
     const connection = await mysql.createConnection({
-      host: '127.0.0.1',
+      host: 'localhost',
       user: 'root',
       password: '123456' // sql password
     });
@@ -28,7 +28,7 @@ let db;
 
     // Now connect to the created database
     db = await mysql.createConnection({
-      host: '127.0.0.1',
+      host: 'localhost',
       user: 'root',
       password: '123456',
       database: 'DogWalkService'
