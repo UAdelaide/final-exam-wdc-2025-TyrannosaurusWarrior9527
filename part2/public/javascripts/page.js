@@ -229,3 +229,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+async function getCurrentUser() {
+  try {
+    const response = await fetch('/user/me');
+    if (!response.ok) {
+      throw new Error('Failed to fetch current user');
+    }
+    const user = await response.json();
+    return user.user_id;
+  } catch (err) {
+    console.error('Error getting current user:', err);
+    return null;
+  }
+}
