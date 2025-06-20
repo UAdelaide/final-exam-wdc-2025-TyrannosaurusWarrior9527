@@ -25,7 +25,7 @@ app.use('/user', userRoutes);
 app.use('/walk', walkRoutes);
 
 // index routes
-app.get 
+app.get('/',(req,res))
 
 // Export the app instead of listening here
 module.exports = app;
