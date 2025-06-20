@@ -1,13 +1,12 @@
 DROP DATABASE IF EXISTS DogWalkService;
 CREATE DATABASE DogWalkService;
 USE DogWalkService;
-
 CREATE TABLE Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
-    role ENUM('owner', 'walker') NOT NULL,  -- 只能是 owner 或 walker
+    role ENUM('owner', 'walker') NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -52,4 +51,5 @@ CREATE TABLE WalkRatings (
     FOREIGN KEY (request_id) REFERENCES WalkRequests(request_id),
     FOREIGN KEY (walker_id) REFERENCES Users(user_id),
     FOREIGN KEY (owner_id) REFERENCES Users(user_id),
-    CONSTRAINT unique_ra
+    CONSTRAINT unique_rating_per_walk UNIQUE (request_id)
+);
