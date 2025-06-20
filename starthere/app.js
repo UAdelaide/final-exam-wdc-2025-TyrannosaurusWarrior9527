@@ -53,7 +53,7 @@ app.post('/api/register', async (req, res) => {
 
     await db.execute(
       'INSERT INTO Users (username, email, password_hash, role) VALUES (?, ?, ?, ?)',
-      [username, email, hashedPassword, role]
+      [username, email, password, role]
     );
 
     res.json({ message: 'Registration successful' });
