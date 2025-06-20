@@ -48,3 +48,42 @@
             if (!userRes.ok) throw new Error('Failed to get current user');
             const userData = await userRes.json();
             const walkerId = userData.user_id;
+
+            const res = await fetch(`/api/walks/${requestId}/apply`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ walker_id: walkerId })
+            });
+            const result = await res.json();
+
+            if (!res.ok) throw new Error(result.error || 'Application failed');
+            message.value = result.message;
+            error.value = '';
+            await loadWalkRequests();
+          } catch (err) {
+            error.value = err.message;
+            message.value = '';
+          }
+        }
+
+        onMounted(() => {
+          loadWalkRequests();
+        });
+
+        return {
+          walks,
+          message,
+          error,
+          applyToWalk
+        };
+      }
+    }).mount('#app');
+    function logout() {
+      fetch('/user/logout')
+        .then(() => {
+          window.location.href = '/';
+        });
+    }
+  </script>
+</body>
+</html>
