@@ -1,15 +1,18 @@
 DROP DATABASE IF EXISTS DogWalkService;
 CREATE DATABASE DogWalkService;
 USE DogWalkService;
+
+
 CREATE TABLE Users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
-    role ENUM('owner', 'walker') NOT NULL,
+    role ENUM('owner', 'walker') NOT NULL,  -- 只能是 owner 或 walker
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- 狗狗表
 CREATE TABLE Dogs (
     dog_id INT AUTO_INCREMENT PRIMARY KEY,
     owner_id INT NOT NULL,
@@ -18,6 +21,7 @@ CREATE TABLE Dogs (
     FOREIGN KEY (owner_id) REFERENCES Users(user_id)
 );
 
+-- 散步请求表
 CREATE TABLE WalkRequests (
     request_id INT AUTO_INCREMENT PRIMARY KEY,
     dog_id INT NOT NULL,
@@ -29,6 +33,7 @@ CREATE TABLE WalkRequests (
     FOREIGN KEY (dog_id) REFERENCES Dogs(dog_id)
 );
 
+-- 申请散步表
 CREATE TABLE WalkApplications (
     application_id INT AUTO_INCREMENT PRIMARY KEY,
     request_id INT NOT NULL,
@@ -40,6 +45,7 @@ CREATE TABLE WalkApplications (
     CONSTRAINT unique_application UNIQUE (request_id, walker_id)
 );
 
+-- 散步评分表
 CREATE TABLE WalkRatings (
     rating_id INT AUTO_INCREMENT PRIMARY KEY,
     request_id INT NOT NULL,
@@ -51,5 +57,4 @@ CREATE TABLE WalkRatings (
     FOREIGN KEY (request_id) REFERENCES WalkRequests(request_id),
     FOREIGN KEY (walker_id) REFERENCES Users(user_id),
     FOREIGN KEY (owner_id) REFERENCES Users(user_id),
-    CONSTRAINT unique_rating_per_walk UNIQUE (request_id)
-);
+    CONSTRAINT unique_ra
