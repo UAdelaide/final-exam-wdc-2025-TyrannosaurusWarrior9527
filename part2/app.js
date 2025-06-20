@@ -9,6 +9,11 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 
 // session
+app.use(session({
+  secret: 'dogwalk-secret-key',
+  resave: false,
+  saveUninitialized: false
+}));
 
 
 // Routes
