@@ -68,4 +68,39 @@ app.post('/api/register', async (req, res) => {
 
 // 登录接口
 app.post('/api/login', async (req, res) => {
-  con
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).json({ message: 'Username and password are required' });
+  }
+
+  try {
+    const [users] = await db.execute(
+      'SELECT * FROM Users WHERE username = ?',
+      [username]
+    );
+
+    if (users.length === 0) {
+      return res.status(400).json({ message: 'Invalid username or password' });
+    }
+
+    const user = users[0];
+    const isMatch = await bcrypt.compare(password, user.password_hash);
+
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid username or password' });
+    }
+
+    res.json({ message: 'Login successful' });
+  } catch (err) {
+    console.error('❌ Login error:', err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// 测试首页
+app.get('/', (req, res) => {
+  res.send('Dog Walking Service API is running.');
+});
+
+module.exports = app;
