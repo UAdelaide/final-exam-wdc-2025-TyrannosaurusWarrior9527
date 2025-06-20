@@ -40,7 +40,7 @@ let db;
   }
 })();
 
-// /api/dogs 路由
+// /api/dogs
 app.get('/api/dogs', async (req, res) => {
   try {
     const [rows] = await db.execute(`
@@ -55,7 +55,7 @@ app.get('/api/dogs', async (req, res) => {
   }
 });
 
-// /api/walkrequests/open 路由
+// /api/walkrequests/open
 app.get('/api/walkrequests/open', async (req, res) => {
   try {
     const [rows] = await db.execute(`
