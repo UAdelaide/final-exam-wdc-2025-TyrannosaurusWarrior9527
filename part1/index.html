@@ -22,3 +22,32 @@
       <button @click="confirmFetch">Load New Dog</button>
     </div>
   </div>
+
+
+  <script>
+    const { createApp } = Vue;
+    createApp({
+      data() {
+        return {
+          dogImage: ''
+        };
+      },
+      mounted() {
+        this.fetchDogImage();
+      },
+      methods: {
+        async fetchDogImage() {
+          const res = await fetch('https://dog.ceo/api/breeds/image/random');
+          const data = await res.json();
+          this.dogImage = data.message;
+        },
+        confirmFetch() {
+          if (confirm("Are you sure you want to load a new dog?")) {
+            this.fetchDogImage();
+          }
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
