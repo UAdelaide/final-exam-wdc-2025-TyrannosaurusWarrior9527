@@ -26,7 +26,7 @@ app.use('/walk', walkRoutes);
 
 // index routes
 app.get('/',(req,res) =>{
-    res.sendFile(path)
+    res.sendFile(path.join(__dirname,'public'))
 }
 
 // Export the app instead of listening here
